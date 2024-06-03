@@ -853,7 +853,8 @@ class sum4all(Plugin):
             }
 
         try:
-            response = requests.post(api_base, headers=headers, json=payload)
+            # 修改等待大模型回复超时时间为90s
+            response = requests.post(api_base, headers=headers, json=payload, timeout=90)
             response.raise_for_status()
             response_json = response.json()
 
